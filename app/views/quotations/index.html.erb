@@ -1,19 +1,25 @@
 
 		<div  id="app">
-			<input v-model.number="price" type="number">円
-			<p>消費税込みの金額{{ taxIncluded }}円</p>
+			<input v-model.number="price" type="number">円 ×
+      <input v-model.number="count" type="number">個
+      <P>     合計 {{ sum }}円</p>
+      <p>税込み合計 {{ taxIncluded }}円</p>
 		</div>
 
 		<script>
 			new Vue({
 				el: '#app',
 				data: {
-					price: 100
+					price: 100,
+          count: 1
 				},
 				computed: {
-					taxIncluded: function() {
-						return this.price * 1.08;
-					}
+					sum: function() {
+						return this.price * this.count;
+					},
+          taxIncluded: function() {
+            return this.sum * 1.08;
+          }
 				}
 			})
 		</script>
