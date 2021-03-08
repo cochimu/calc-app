@@ -1,25 +1,33 @@
 
-		<div  id="app">
-			<input v-model.number="price" type="number">円 ×
-      <input v-model.number="count" type="number">個
-      <P>     合計 {{ sum }}円</p>
-      <p>税込み合計 {{ taxIncluded }}円</p>
+		<h2>文章を入力したら、残りの文字数を表示する例</h2>
+		<div id="app">
+			<p>ご感想は、140文字以内でご入力ください。</p>
+			<textarea  v-model="myText"></textarea>
+			<p v-bind:style="{color: computedColor}">残り {{ remaining }} 文字です。</p>
 		</div>
 
 		<script>
 			new Vue({
 				el: '#app',
 				data: {
-					price: 100,
-          count: 1
+					myText:'今日は、いい天気です。'
 				},
 				computed: {
-					sum: function() {
-						return this.price * this.count;
+					// myTextの長さが変わったら、残りの文字数を算出する
+					remaining: function() {
+						return 140 - this.myText.length;
 					},
-          taxIncluded: function() {
-            return this.sum * 1.08;
-          }
+					// remainingが変わったら、computedColorを算出する
+					computedColor: function() {
+						col = "green";
+						if (this.remaining < 20) {
+							col = "orange";
+						}
+						if (this.remaining < 1) {
+							col = "red";
+						}
+						return col;
+					}
 				}
 			})
 		</script>
