@@ -1,18 +1,15 @@
 <div id="app">
-  <textarea v-model="input"></textarea>
-	<div v-html="convertMarkdown"></div>
+  <label><input type="checkbox" v-model="isOK">切り替える</label>
+	<transition>
+	  <p v-if="isOK">表示、非表示のアニメ</p>
+	</transition>
 </div>
 
 <script>
   new Vue({
 		el: '#app',
 		data: {
-			input: ''
-		},
-		computed: {
-			convertMarkdown:function() {
-				return marked(this.input);
-			}
+			isOK: false
 		}
 	});
 </script>
