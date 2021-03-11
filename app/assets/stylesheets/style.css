@@ -76,3 +76,8 @@ table tr:nth-of-type(even) {
 .v-move {
 	transition: 0.5s;
 }
+
+.donestyle {
+	text-decoration: line-through;
+	color: lightgray;
+}
