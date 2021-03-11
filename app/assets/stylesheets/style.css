@@ -72,3 +72,7 @@ table tr:nth-of-type(even) {
 	opacity: 0;
 	transform: translateX(50px);
 }
+
+.v-move {
+	transition: 0.5s;
+}
